@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asignaturas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="docente"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-list>
+          <ion-item *ngFor="let item of getdata" [routerLink]="['/generador/']">
+            <ion-avatar slot="start">
+              <img src="{{item.imagen}}" alt="" />
+            </ion-avatar>
+            <ion-label> {{item.nombre}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

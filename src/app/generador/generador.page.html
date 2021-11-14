@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cursos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="asignatura"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div class="logo">
+    <img
+      src="https://colegiocarlosoviedo.cl/wp-content/uploads/2020/04/logo_normal.png"
+      alt=""
+    />
+  </div>
+  <div>
+    <h2>Generador QR para Docentes</h2>
+    <p>Presione el botón azul y comparta este código QR con sus estudiantes</p>
+    <br />
+    <ion-button
+      expand="block"
+      shape="round"
+      class="btn-login"
+      (click)="displayImage()"
+      >Generar QR</ion-button
+    >
+    <ion-card *ngIf="mostrarImagen">
+      <img src="../assets/codigoduoc.png" />
+    </ion-card>
+    <br />
+    <ion-button
+      expand="block"
+      shape="round"
+      class="btn-login"
+      [routerLink]="['/lista/']"
+      >Lista de Estudiantes</ion-button
+    >
+  </div>
+  <br />
+  <br />
+  <br />
+  <ion-row>
+    <ion-col size="12">
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="primary"
+        (click)="signOut()"
+        >Cerrar Sesión</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-content>
