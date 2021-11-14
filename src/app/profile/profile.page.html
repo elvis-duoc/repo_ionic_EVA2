@@ -1,5 +1,11 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar> </ion-toolbar>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3 *ngFor="let item of getfrase">
+        <p>Bienveni@ {{item.name.first}}</p>
+      </h3>
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="profile-content">

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileModel } from './profile.model';
 import { FirebaseAuthService } from '../firebase-auth.service';
 import { AlertController } from '@ionic/angular';
-
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +12,20 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
   user: ProfileModel;
+  getfrase = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private authService: FirebaseAuthService,
-    public alertCtrl: AlertController
-  ) { }
+    public alertCtrl: AlertController,
+    private http: HttpClient
+  ) {
+    this.http.get<any>("https://randomuser.me/api/").subscribe((res) => {
+      console.log(res);
+      this.getfrase = res.results;
+    });
+   }
 
   ngOnInit() {
     this.route.data
@@ -47,5 +54,7 @@ export class ProfilePage implements OnInit {
     const result = await alert.onDidDismiss();  
     console.log(result);  
   } 
+
+  
   
 }
