@@ -14,6 +14,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { FirebaseAuthService } from './firebase-auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +28,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
+    NgxQRCodeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
   ],
@@ -29,7 +36,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     FirebaseAuthService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    BarcodeScanner,
+    Base64ToGallery
   ],
   bootstrap: [AppComponent]
 })

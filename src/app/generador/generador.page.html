@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Generador QR - Curso1</ion-title>
+    <ion-title>Generador QR - Clase</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="asignatura"></ion-back-button>
     </ion-buttons>
@@ -18,6 +18,16 @@
     <h2>Generador QR para Docentes</h2>
     <p>Presione el botón azul y comparta este código QR con sus estudiantes</p>
     <br />
+    <div>
+      <ion-button
+        expand="block"
+        shape="round"
+        class="btn-login"
+        [routerLink]="['/lista/']"
+        >Lista de Estudiantes</ion-button
+      >
+    </div>
+    <br />
     <ion-button
       expand="block"
       shape="round"
@@ -26,29 +36,25 @@
       >Generar QR</ion-button
     >
     <ion-card *ngIf="mostrarImagen">
-      <img src="../assets/codigoduoc.png" />
+      <ion-card *ngIf="qrData" style="text-align: center">
+        <ngx-qrcode
+          [elementType]="elementType"
+          [value]="qrData"
+          qrc-class="my-code"
+        >
+        </ngx-qrcode>
+      </ion-card>
+      <ion-item>
+        <ion-input
+          type="text"
+          placeholder="QR Code Scanner"
+          [(ngModel)]="qrData"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-card *ngIf="scannedCode" style="text-align: center">
+        <ion-card-content> Result of Scan: {{ scannedCode }} </ion-card-content>
+      </ion-card>
     </ion-card>
-    <br />
-    <ion-button
-      expand="block"
-      shape="round"
-      class="btn-login"
-      [routerLink]="['/lista/']"
-      >Lista de Estudiantes</ion-button
-    >
   </div>
-  <br />
-  <br />
-  <br />
-  <ion-row>
-    <ion-col size="12">
-      <ion-button
-        expand="block"
-        fill="outline"
-        color="primary"
-        (click)="signOut()"
-        >Cerrar Sesión</ion-button
-      >
-    </ion-col>
-  </ion-row>
 </ion-content>

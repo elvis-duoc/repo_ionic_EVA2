@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileModel } from './generador.model';
 import { FirebaseAuthService } from '../firebase-auth.service';
 import { GetapiService } from '../servicios/getapi.service';
+//import {BarcodeScanner} from '@ionic-native/barcode-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-generador',
@@ -10,26 +14,22 @@ import { GetapiService } from '../servicios/getapi.service';
   styleUrls: ['./generador.page.scss'],
 })
 export class GeneradorPage{
-  mostrarImagen = false;
+
   getdata:any[]=[];
+  mostrarImagen = false;
+
+  qrData = 'ID/TOKEN/Bx2wMak1pZXzL5CW/';
+
   constructor( 
     public _services: GetapiService, 
     private router: Router,
     private route: ActivatedRoute,
     private authService: FirebaseAuthService,
-    ) {
-
-    this._services.getdata<any[]>("").subscribe(data => {
-      this.getdata = data
-      console.log(this.getdata);
-    }
-      )
-    
-  }
-  displayImage() {
-    this.mostrarImagen = !this.mostrarImagen;
-  }
-
+    private barcodeScanner: BarcodeScanner,
+		private base64ToGallery: Base64ToGallery,
+		private toastCtrl: ToastController
+    ) {}
+  
   signOut() {
     this.authService.signOut().subscribe(() => {
       // Sign-out successful.
@@ -37,6 +37,10 @@ export class GeneradorPage{
     }, (error) => {
       console.log('signout error', error);
     });
+  }
+
+  displayImage() {
+    this.mostrarImagen = !this.mostrarImagen;
   }
   
 

@@ -11,7 +11,13 @@ export class GetapiService {
 
   getdata<T> (url : string)
   {
-    url = 'https://api.npoint.io/d4d4d6ce4403e94fa17e/docentes'
+    url = 'https://api.npoint.io/f1b894a5c30c2b035c39/asignatura'
+    return this._http.get<T[]>(url);
+  }
+
+  getdata1<T> (url : string)
+  {
+    url = 'https://api.npoint.io/280f8e8c84684bfd4368/estudiantes'
     return this._http.get<T[]>(url);
   }
 }

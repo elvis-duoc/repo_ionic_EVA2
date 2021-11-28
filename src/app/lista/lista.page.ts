@@ -8,12 +8,12 @@ import { GetapiService } from '../servicios/getapi.service';
 })
 export class ListaPage{
 
-  getdata:any[]=[];
+  getdata1:any[]=[];
   constructor( public _services: GetapiService) {
 
-    this._services.getdata<any[]>("").subscribe(data => {
-      this.getdata = data
-      console.log(this.getdata);
+    this._services.getdata1<any[]>("").subscribe(data => {
+      this.getdata1 = data
+      console.log(this.getdata1);
     }
       
       )

@@ -13,10 +13,7 @@
       <ion-col sizeMd="4" offsetMd="4">
         <ion-list>
           <ion-item *ngFor="let item of getdata" [routerLink]="['/generador/']">
-            <ion-avatar slot="start">
-              <img src="{{item.imagen}}" alt="" />
-            </ion-avatar>
-            <ion-label> {{item.nombre}}</ion-label>
+            <ion-label> {{item.nombre}} {{item.seccion}}</ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
